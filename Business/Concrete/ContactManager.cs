@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constant;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -34,19 +35,22 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        [SecuredOperation("admin")]
         public IResult Delete(Contact contact)
         {
             _contactDal.Delete(contact);
             return new SuccessResult(Messages.MessageDeleted);
         }
 
-        public IDataResult<List<Contact>> GetByReadMessage()
+        [SecuredOperation("admin")]
+        public IDataResult<List<Contact>> GetReadMessages()
         {
             var result = _contactDal.GetAll(m => m.Status == true);
             return new SuccessDataResult<List<Contact>>(result);
         }
 
-        public IDataResult<List<Contact>> GetByUnreadMessage()
+        [SecuredOperation("admin")]
+        public IDataResult<List<Contact>> GetUnreadMessages()
         {
             var result = _contactDal.GetAll(m => m.Status == false);
             return new SuccessDataResult<List<Contact>>(result);

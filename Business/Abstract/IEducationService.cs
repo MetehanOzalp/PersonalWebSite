@@ -11,6 +11,6 @@ namespace Business.Abstract
         IResult Add(Education education);
         IResult Delete(Education education);
         IResult Update(Education education);
-        IDataResult<List<Education>> GetAll(Education education);
+        IDataResult<List<Education>> GetAll();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constant;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -18,12 +19,14 @@ namespace Business.Concrete
             _projectDal = projectDal;
         }
 
+        [SecuredOperation("admin")]
         public IResult Add(Project project)
         {
             _projectDal.Add(project);
             return new SuccessResult(Messages.ProjectAdded);
         }
 
+        [SecuredOperation("admin")]
         public IResult Delete(Project project)
         {
             _projectDal.Delete(project);
@@ -35,6 +38,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Project>>(_projectDal.GetAll());
         }
 
+        [SecuredOperation("admin")]
         public IResult Update(Project project)
         {
             _projectDal.Update(project);

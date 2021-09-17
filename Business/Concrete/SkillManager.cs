@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constant;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -18,12 +19,14 @@ namespace Business.Concrete
             _skillDal = skillDal;
         }
 
+        [SecuredOperation("admin")]
         public IResult Add(Skill skill)
         {
             _skillDal.Add(skill);
             return new SuccessResult(Messages.SkillAdded);
         }
 
+        [SecuredOperation("admin")]
         public IResult Delete(Skill skill)
         {
             _skillDal.Delete(skill);
@@ -35,6 +38,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Skill>>(_skillDal.GetAll());
         }
 
+        [SecuredOperation("admin")]
         public IResult Update(Skill skill)
         {
             _skillDal.Update(skill);

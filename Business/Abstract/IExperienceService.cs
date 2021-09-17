@@ -11,6 +11,6 @@ namespace Business.Abstract
         IResult Add(Experience experience);
         IResult Delete(Experience experience);
         IResult Update(Experience experience);
-        IDataResult<List<Experience>> GetAll(Experience experience);
+        IDataResult<List<Experience>> GetAll();
     }
 }

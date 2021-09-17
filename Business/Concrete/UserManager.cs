@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constant;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
@@ -26,6 +27,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserAdded);
         }
 
+        [SecuredOperation("admin")]
         public IResult Delete(User user)
         {
             _userDal.Delete(user);

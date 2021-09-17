@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constant;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -18,12 +19,14 @@ namespace Business.Concrete
             _aboutMeDal = aboutMeDal;
         }
 
+        [SecuredOperation("admin")]
         public IResult Add(AboutMe aboutMe)
         {
             _aboutMeDal.Add(aboutMe);
             return new SuccessResult(Messages.AboutMeAdded);
         }
 
+        [SecuredOperation("admin")]
         public IResult Delete(AboutMe aboutMe)
         {
             _aboutMeDal.Delete(aboutMe);
@@ -35,6 +38,7 @@ namespace Business.Concrete
             return new SuccessDataResult<AboutMe>(_aboutMeDal.GetAll()[0]);
         }
 
+        [SecuredOperation("admin")]
         public IResult Update(AboutMe aboutMe)
         {
             _aboutMeDal.Update(aboutMe);
