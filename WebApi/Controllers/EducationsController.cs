@@ -42,7 +42,7 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPost("getAll")]
+        [HttpGet("getAll")]
         public IActionResult GetAll()
         {
             var result = _educationService.GetAll();

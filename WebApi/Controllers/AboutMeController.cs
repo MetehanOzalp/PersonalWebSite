@@ -21,9 +21,9 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(AboutMe aboutMe)
+        public IActionResult Add([FromForm(Name = ("image"))] IFormFile file, [FromForm] AboutMe aboutMe)
         {
-            var result = _aboutMeService.Add(aboutMe);
+            var result = _aboutMeService.Add(file, aboutMe);
             if (!result.Success)
             {
                 return BadRequest(result);

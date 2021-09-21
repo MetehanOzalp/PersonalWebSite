@@ -76,7 +76,7 @@ namespace WebApi
 
             app.ConfigureCustomExceptionMiddleware();
 
-            //app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
 
             app.UseHttpsRedirection();
 
@@ -86,12 +86,12 @@ namespace WebApi
 
             app.UseAuthorization();
 
-            /*app.UseStaticFiles(new StaticFileOptions
+            app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "images")),
                 RequestPath = "/images"
-            });*/
+            });
 
             app.UseEndpoints(endpoints =>
             {

@@ -21,9 +21,9 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Project project)
+        public IActionResult Add([FromForm(Name = ("image"))] IFormFile file, [FromForm] Project project)
         {
-            var result = _projectService.Add(project);
+            var result = _projectService.Add(file, project);
             if (!result.Success)
             {
                 return BadRequest(result);

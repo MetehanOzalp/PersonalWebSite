@@ -12,6 +12,6 @@ namespace Entities
         public string FieldOfStudy { get; set; }
         public string Degree { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
 }

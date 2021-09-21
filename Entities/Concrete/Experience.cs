@@ -11,6 +11,6 @@ namespace Entities
         public string CompanyName { get; set; }
         public string PositionName { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
 }

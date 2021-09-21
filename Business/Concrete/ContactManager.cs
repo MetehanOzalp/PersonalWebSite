@@ -21,6 +21,8 @@ namespace Business.Concrete
 
         public IResult Add(Contact contact)
         {
+            contact.Status = false;
+            contact.ContactDate = DateTime.Now;
             _contactDal.Add(contact);
             return new SuccessResult(Messages.MessageSent);
         }

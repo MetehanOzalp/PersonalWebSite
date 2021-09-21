@@ -1,9 +1,11 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constant;
+using Core.Utilities.FileHelper;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,8 +22,9 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("admin")]
-        public IResult Add(Project project)
+        public IResult Add(IFormFile file, Project project)
         {
+            project.ProjectThumbnail = FileHelper.Add(file);
             _projectDal.Add(project);
             return new SuccessResult(Messages.ProjectAdded);
         }
