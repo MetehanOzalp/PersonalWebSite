@@ -44,6 +44,11 @@ namespace Business.Concrete
             return new SuccessResult(Messages.MessageDeleted);
         }
 
+        public IDataResult<List<Contact>> GetAll()
+        {
+            return new SuccessDataResult<List<Contact>>(_contactDal.GetAll());
+        }
+
         [SecuredOperation("admin")]
         public IDataResult<List<Contact>> GetReadMessages()
         {

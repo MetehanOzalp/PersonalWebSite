@@ -11,6 +11,7 @@ namespace Business.Abstract
         IResult Add(Contact contact);
         IResult Delete(Contact contact);
         IResult ChangeStatus(Contact contact);
+        IDataResult<List<Contact>> GetAll();
         IDataResult<List<Contact>> GetUnreadMessages();
         IDataResult<List<Contact>> GetReadMessages();
     }

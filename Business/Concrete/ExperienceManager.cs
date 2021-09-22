@@ -6,6 +6,7 @@ using DataAccess.Abstract;
 using Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -35,7 +36,11 @@ namespace Business.Concrete
 
         public IDataResult<List<Experience>> GetAll()
         {
-            return new SuccessDataResult<List<Experience>>(_experienceDal.GetAll());
+            var experiences = _experienceDal.GetAll();
+            var orderByDescendingResult = (from e in experiences
+                                           orderby e.StartDate descending
+                                           select e).ToList();
+            return new SuccessDataResult<List<Experience>>(experiences);
         }
 
         [SecuredOperation("admin")]

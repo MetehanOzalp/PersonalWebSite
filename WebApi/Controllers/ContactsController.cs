@@ -53,6 +53,17 @@ namespace WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpGet("getAll")]
+        public IActionResult GetAll()
+        {
+            var result = _contactService.GetAll();
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+            return Ok(result);
+        }
+
         [HttpGet("getReadMessages")]
         public IActionResult GetReadMessages()
         {
